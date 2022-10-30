@@ -1,0 +1,15 @@
+.loading-container {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: darkgrey;
+    z-index: 10000;
+    overflow: hidden;
+    opacity: 0.7;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
