@@ -12,6 +12,10 @@ const Api ={
     createUser(newUser) {
         const url = "/users";
         return axiosClient.post(url, newUser);
+    },
+    getUserById(id){
+        const url = `users/${id}`;
+        return axiosClient.get(url);
     }
 }
 export default Api;
