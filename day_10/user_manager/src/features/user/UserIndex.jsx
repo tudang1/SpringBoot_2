@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import Api from "./Api";
 import UserCreate from "./UserCreate";
+import { Link } from "react-router-dom";
 
 function UserIndex(){
     const [users, setUsers] = useState([]);
@@ -65,7 +66,7 @@ function UserIndex(){
             <div className="col-md-10">
 
                 <div className="d-flex justify-content-between align-items-center mt-5 mb-4">
-                    <a href="./create.html" className="btn btn-warning">Tạo user</a>
+                    <Link href="./create.html" className="btn btn-warning" to={"/users/create"}>Tạo user</Link>
                     <input type="text" id="search" className="form-control w-50" placeholder="Tìm kiếm user" 
                     value={term}
                     onChange={(e) => setTerm(e.target.value)}
@@ -98,7 +99,7 @@ function UserIndex(){
                                         <td>{user.phone}</td>
                                         <td>{user.address}</td>
                                         <td>
-                                            <a href="./detail.html?id=2" className="btn btn-success">Xem chi tiết</a>
+                                            <Link className="btn btn-success" to={"/user/"}>Xem chi tiết</Link>
                                             <button className="btn btn-danger" onClick={()=>handleDelete(user.id)}>Xóa</button>
                                         </td>
                                     </tr>
