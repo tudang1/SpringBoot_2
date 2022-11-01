@@ -87,13 +87,22 @@ function Detail() {
   const handleUpdatePassword = async (oldPassword, newPassword) => {
     try {
       console.log(user.id);
-      let idp = user.id;
       console.log(newPassword);
-      // Tìm kiếm mk hien tai dựa trên id
-      let currentPassword = users.find((user) => user.id === idp).password;
-      console.log(currentPassword);
+      if(!oldPassword){
+        alert("xin nhập mk");
+        return;
+      }
+      const updatedPassword = {
+        oldPassword : oldPassword,
+        newPassword : newPassword
+      }
 
-      // await Api.updatePassword(user.id, newPassword);
+      await Api.updatePassword(user.id, updatedPassword);
+      //sau khi UpdatePassword thành cong
+      alert("UpdatePassword Thành Công");
+      setTimeout(() => {
+        navigate("/users");
+      }, 1500);
     } catch (e) {
       alert(e);
     }
