@@ -16,6 +16,14 @@ const Api ={
     getUserById(id){
         const url = `users/${id}`;
         return axiosClient.get(url);
+    },
+    updateUser(id, updatedUser) {
+        const url = `users/${id}`;
+        return axiosClient.put(url, updatedUser);
+    },
+    updatePassword(id,password){
+        const url = `users/${id}/update-password`;
+        return axiosClient.put(url,password);
     }
 }
 export default Api;

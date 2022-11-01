@@ -83,7 +83,7 @@ function TodoList() {
 
             // Gọi API cập nhật phía server
             let res = await todoApi.updateTodo(id, updatedTodo);
-            console.log(res.data);
+            console.log(res.data);  
 
             // Cập nhật trong state ban đầu
             // { id : 1, title : "Học bài", status : false, title : "Làm bài tập"}

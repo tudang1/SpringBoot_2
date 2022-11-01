@@ -99,7 +99,7 @@ function UserIndex(){
                                         <td>{user.phone}</td>
                                         <td>{user.address}</td>
                                         <td>
-                                            <Link className="btn btn-success" to={"/user/"}>Xem chi tiết</Link>
+                                            <Link className="btn btn-success" to={`/users/${user.id}`}>Xem chi tiết</Link>
                                             <button className="btn btn-danger" onClick={()=>handleDelete(user.id)}>Xóa</button>
                                         </td>
                                     </tr>

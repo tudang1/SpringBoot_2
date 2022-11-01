@@ -39,13 +39,7 @@ function UserCreate() {
     fetchProvinces();
   }, []);
 
-  const handleAdd = async (
-    userName,
-    userEmail,
-    userPhone,
-    tinh,
-    userPassword
-  ) => {
+  const handleAdd = async (userName,userEmail,userPhone,tinh,userPassword) => {
     try {
       if (!userName) {
         alert("Tiêu đề không được để trống");
@@ -59,12 +53,9 @@ function UserCreate() {
         address: tinh,
         password: userPassword,
       };
-      // Gọi API xóa phía server
-      let res = await Api.createUser(newUser);
-
-      // Cập nhật trong state ban đầu
-      const newUsers = [...users, res.data];
-      setUsers(newUsers);
+      // Gọi API tạo phía server
+      await Api.createUser(newUser);
+      
       //sau khi tạo User thành cong
       alert("Tạo User Thành Công");
       setTimeout(() => {

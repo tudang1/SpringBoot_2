@@ -2,11 +2,29 @@ import axios from "axios";
 import Api from "./Api";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Detail() {
   const { userId } = useParams();
   const [provinces, setProvinces] = useState([]);
   const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+  const [oldPassword, setOldPassword] = useState(null);
+  const [newPassword, setNewPassword] = useState(null);
+
+  useEffect(() => {
+    const fectUsers = async () => {
+      try {
+        let res = await Api.getUsers();
+        setUser(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fectUsers();
+  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,9 +55,49 @@ function Detail() {
     fetchProvinces();
   }, []);
 
-  const updateInfo = ()=>{
-    
-  }
+  //updateInformation
+  const handleUpdateInfo = async (id) => {
+    try {
+      // Tìm kiếm công việc dựa trên id
+      //user
+      if (!user.name) {
+        alert("Tiêu đề không được để trống");
+        return;
+      }
+      //tạo biến mới
+      const updatedUser = {
+        name: user.name,
+        phone: user.phone,
+        address: user.address,
+      };
+      // Gọi API cập nhật phía server
+      await Api.updateUser(id, updatedUser);
+
+      //sau khi Update User thành cong
+      alert("Update User Thành Công");
+      setTimeout(() => {
+        navigate("/users");
+      }, 1500);
+    } catch (e) {
+      alert(e.response.data.message);
+    }
+  };
+
+  //updatePassword
+  const handleUpdatePassword = async (oldPassword, newPassword) => {
+    try {
+      console.log(user.id);
+      let idp = user.id;
+      console.log(newPassword);
+      // Tìm kiếm mk hien tai dựa trên id
+      let currentPassword = users.find((user) => user.id === idp).password;
+      console.log(currentPassword);
+
+      // await Api.updatePassword(user.id, newPassword);
+    } catch (e) {
+      alert(e);
+    }
+  };
   return (
     <div className="container mt-5 mb-5">
       <h2 className="text-center text-uppercase mb-3">Thông tin user</h2>
@@ -83,7 +141,7 @@ function Detail() {
                 className="form-select"
                 id="address"
                 value={user?.address}
-                onChange={(e) => setUser(e.target.value)}
+                onChange={(e) => setUser({ ...user, address: e.target.value })}
               >
                 <option hidden>Chọn Tỉnh/Thành Phố</option>
                 {provinces.map((p) => (
@@ -127,8 +185,14 @@ function Detail() {
             </div>
           </div>
           <div className="text-center mt-3">
-            <button className="btn btn-secondary btn-back">Quay lại</button>
-            <button className="btn btn-success" id="btn-save" onClick={()=>updateInfo()}>
+            <Link className="btn btn-secondary btn-back" to={"/users"}>
+              Quay lại
+            </Link>
+            <button
+              className="btn btn-success"
+              id="btn-save"
+              onClick={() => handleUpdateInfo(user.id)}
+            >
               Cập nhật
             </button>
           </div>
@@ -161,11 +225,23 @@ function Detail() {
             <div className="modal-body">
               <div className="mb-3">
                 <label className="col-form-label">Mật khẩu cũ</label>
-                <input type="text" id="old-password" className="form-control" />
+                <input
+                  type="text"
+                  id="old-password"
+                  className="form-control"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
               </div>
               <div className="mb-3">
                 <label className="col-form-label">Mật khẩu mới</label>
-                <input type="text" id="new-password" className="form-control" />
+                <input
+                  type="text"
+                  id="new-password"
+                  className="form-control"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
               </div>
             </div>
             <div className="modal-footer">
@@ -180,6 +256,7 @@ function Detail() {
                 type="button"
                 className="btn btn-primary"
                 id="btn-change-password"
+                onClick={() => handleUpdatePassword(oldPassword, newPassword)}
               >
                 Xác nhận
               </button>
