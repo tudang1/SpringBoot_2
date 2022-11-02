@@ -9,7 +9,8 @@ function ProductList({ onItems, onCong, onTru }) {
     <div>
       {onItems.map((item) => (
         <ProductItem
-          key={item.id}
+          key = {item.id}
+          id={item.id}
           name={item.name}
           image={item.image}
           price={item.price}

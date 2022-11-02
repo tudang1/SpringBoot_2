@@ -5,40 +5,40 @@ import { cartItems } from "../../data";
 function ProductItem(props) {
   const { id, name, image, price, count, size ,onTru,onCong} = props;
   // const [product,setProduct] = useState(props);
-  const tru = (count) =>{
+  const tru = (id) =>{
     // console.log(count);
-    onTru(count);
+    onTru(id);
   };
-  const cong = (count) =>{
+  const cong = (id) =>{
     // console.log(count);
-    onCong(count);
+    onCong(id);
   };
 
   
   return (
-    <div class="product-item d-flex border mb-4">
-      <div class="image">
+    <div className="product-item d-flex border mb-4">
+      <div className="image">
         <img
           src={image}
         />
       </div>
-      <div class="info d-flex flex-column justify-content-between px-4 py-3 flex-grow-1">
+      <div className="info d-flex flex-column justify-content-between px-4 py-3 flex-grow-1">
         <div>
-          <div class="d-flex justify-content-between align-items-center">
-            <h2 class="text-dark fs-5 fw-normal">{name}</h2>
-            <h2 class="text-dark fs-5 fw-normal">{size}</h2>
-            <h2 class="text-danger fs-5 fw-normal">{price}</h2>
+          <div className="d-flex justify-content-between align-items-center">
+            <h2 className="text-dark fs-5 fw-normal">{name}</h2>
+            <h2 className="text-dark fs-5 fw-normal">{size}</h2>
+            <h2 className="text-danger fs-5 fw-normal">{price}</h2>
           </div>
-          <div class="text-black-50">
-            <div class="d-inline-block me-3">
-              <button class="border py-2 px-3 d-inline-block fw-bold bg-light"
-                onClick={()=>tru(count)}
+          <div className="text-black-50">
+            <div className="d-inline-block me-3">
+              <button className="border py-2 px-3 d-inline-block fw-bold bg-light"
+                onClick={()=>tru(id)}
               >
                 -
               </button>
-              <span class="py-2 px-3 d-inline-block fw-bold">{count}</span>
-              <button class="border py-2 px-3 d-inline-block fw-bold bg-light"
-                onClick={()=>cong(count)}
+              <span className="py-2 px-3 d-inline-block fw-bold">{count}</span>
+              <button className="border py-2 px-3 d-inline-block fw-bold bg-light"
+                onClick={()=>cong(id)}
               >
                 +
               </button>
@@ -46,9 +46,9 @@ function ProductItem(props) {
           </div>
         </div>
         <div>
-          <button class="text-primary border-0 bg-transparent fw-light">
+          <button className="text-primary border-0 bg-transparent fw-light">
             <span>
-              <i class="fa-solid fa-trash-can"></i>
+              <i className="fa-solid fa-trash-can"></i>
             </span>
             Xóa
           </button>
