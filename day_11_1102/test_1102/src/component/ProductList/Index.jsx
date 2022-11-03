@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import ProductItem from "../ProductItem/Index";
 
-function ProductList({ onItems, onCong, onTru }) {
+function ProductList({ onItems, onCong, onTru, onDelete}) {
 
   return (
     // console.log(onItems)
@@ -18,6 +18,7 @@ function ProductList({ onItems, onCong, onTru }) {
           size={item.size}
           onCong={onCong}
           onTru={onTru}
+          onDelete = {onDelete}
         />
       ))}
     </div>

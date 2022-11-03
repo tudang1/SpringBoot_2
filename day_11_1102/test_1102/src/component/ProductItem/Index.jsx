@@ -3,7 +3,7 @@ import { useState } from "react";
 import { cartItems } from "../../data";
 
 function ProductItem(props) {
-  const { id, name, image, price, count, size ,onTru,onCong} = props;
+  const { id, name, image, price, count, size ,onTru,onCong , onDelete} = props;
   // const [product,setProduct] = useState(props);
   const tru = (id) =>{
     // console.log(count);
@@ -12,6 +12,9 @@ function ProductItem(props) {
   const cong = (id) =>{
     // console.log(count);
     onCong(id);
+  };
+  const handleDelete = (id)=>{
+    onDelete(id);
   };
 
   
@@ -46,7 +49,9 @@ function ProductItem(props) {
           </div>
         </div>
         <div>
-          <button className="text-primary border-0 bg-transparent fw-light">
+          <button className="text-primary border-0 bg-transparent fw-light"
+            onClick={() => handleDelete(id)}
+          >
             <span>
               <i className="fa-solid fa-trash-can"></i>
             </span>
