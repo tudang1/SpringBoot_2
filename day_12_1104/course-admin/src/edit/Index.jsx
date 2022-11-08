@@ -26,7 +26,7 @@ function CourseEdit() {
             try{
                 let res = await Api.getCourseById(courseId);
                 setCourse(res.data);
-            
+                console.log(res.data)
                 
             }catch(error){
                 console.log(error);
@@ -97,7 +97,7 @@ function CourseEdit() {
                         <div className="mb-3">
                             <label className="form-label fw-bold">Tư vấn viên</label>
                             <select className="form-control" 
-                                value={course?.user}
+                                
                             >
                                 <option hidden>- Chọn tư vấn viên</option>
                                 {users.map((u)=>(
