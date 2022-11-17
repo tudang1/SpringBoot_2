@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="index.html :: header('Search')">
+</head>
+<body>
+<h1>Search</h1>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">FullName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="obj, iStat:${employees}">
+        <th scope="row" th:text="${iStat.index} +1"></th>
+        <td th:text="${obj.fullName}"></td>
+        <td th:text="${obj.email}"></td>
+        <td th:text="${obj.phone}"></td>
+        <td th:text="${obj.country}"></td>
+    </tr>
+
+    </tbody>
+</table>
+<!--<p th:each="obj : ${employees}">-->
+<!--    <span th:text="${obj.id}"></span>-->
+<!--    <span th:text="${obj.fullName}"></span>-->
+<!--    <span th:text="${obj.email}"></span>-->
+<!--    <span th:text="${obj.phone}"></span>-->
+<!--    <span th:text="${obj.country}"></span>-->
+<!--</p>-->
+</body>
+</html>

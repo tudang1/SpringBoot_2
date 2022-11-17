@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="header(home)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body>
+<h1>Trang Chủ</h1>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">FullName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="obj, iStat:${listEmployee}">
+        <th scope="row" th:text="${iStat.index} +1"></th>
+        <td th:text="${obj.fullName}"></td>
+        <td th:text="${obj.email}"></td>
+        <td th:text="${obj.phone}"></td>
+        <td th:text="${obj.country}"></td>
+    </tr>
+
+    </tbody>
+</table>
+<!--<p th:each="obj : ${listEmployee}">-->
+<!--    <span th:text="${obj.id}"></span>-->
+<!--    <span th:text="${obj.fullName}"></span>-->
+<!--    <span th:text="${obj.email}"></span>-->
+<!--    <span th:text="${obj.phone}"></span>-->
+<!--    <span th:text="${obj.country}"></span>-->
+<!--</p>-->
+</body>
+</html>
