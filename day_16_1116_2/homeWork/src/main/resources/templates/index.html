@@ -5,12 +5,12 @@
     <title>Home</title>
 </head>
 <body>
-<h1>Wellcome</h1>
+    <h1>Wellcome</h1>
 
-<p th:each ="obj: ${listDepartment}">
-    <span th:text="${obj.id}"></span>
-    <span th:text="${obj.fullName}"></span>
-    <span th:text="${obj.position}"></span>
-</p>
+    <p th:each ="obj: ${listDepartment}">
+        <span th:text="${obj.id}"></span>
+        <span th:text="${obj.fullName}"></span>
+        <span th:text="${obj.position}"></span>
+    </p>
 </body>
 </html>

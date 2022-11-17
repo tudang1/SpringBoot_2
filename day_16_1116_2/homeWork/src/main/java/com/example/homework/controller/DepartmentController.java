@@ -19,7 +19,7 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @GetMapping("")
+    @GetMapping("/list")
     public String getAll(Model model){
         List<Department> departments = departmentService.getAll();
 
@@ -38,6 +38,6 @@ public class DepartmentController {
         List<Department> departments = departmentService.getAll();
 
         model.addAttribute("listDepartment", departments);
-        return "index";
+        return "redirect:/list";
     }
 }

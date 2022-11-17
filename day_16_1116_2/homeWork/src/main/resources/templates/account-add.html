@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Add</title>
+</head>
+<body>
+    <h1>Account Add</h1>
+
+    <form th:action="${'/account/save'}" method="post">
+        <p>Username</p>
+        <input type="text" name="username" />
+        <br />
+        <br />
+
+        <p>Password</p>
+        <input type="password" name="password" />
+        <br />
+        <br />
+
+        <p>Full Name</p>
+        <input type="text" name="fullName" />
+        <br />
+        <br />
+
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+</html>
