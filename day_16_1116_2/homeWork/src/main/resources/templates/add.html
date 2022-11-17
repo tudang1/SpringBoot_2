@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<h1>Department Create</h1>
+<Form th:action="${'/add/save'}" method="post">
+    <h2>Full Name</h2>
+    <input type="text" name="fullName"/>
+    <br/>
+    <br/>
+    <h2>Position</h2>
+    <input type="text" name="position"/>
+    <br/>
+    <br/>
+    <h2>Salary</h2>
+    <input type="text" name="salary"/>
+    <br/>
+    <br/>
+
+    <input type="submit" name="Submit"/>
+</Form>
+</body>
+</html>
