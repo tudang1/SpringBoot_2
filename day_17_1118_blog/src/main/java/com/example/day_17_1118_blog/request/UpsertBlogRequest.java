@@ -6,11 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateBlogRequest {
+public class UpsertBlogRequest {
     private String title;
 
     private String content;
@@ -21,6 +23,6 @@ public class CreateBlogRequest {
 
     private Boolean status;
 
-    private List<Integer> categoryIds;
+    private Set<Integer> categoryIds;
 
 }

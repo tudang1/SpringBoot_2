@@ -1,9 +1,7 @@
 package com.example.day_17_1118_blog.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,9 +9,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Builder
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "blog")
 public class Blog {
@@ -28,11 +27,11 @@ public class Blog {
     @Column(name = "slug")
     private String slug;
 
-    @Column(name = "content", columnDefinition = "TEXT")
-    private String content;
-
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "content", columnDefinition = "TEXT")
+    private String content;
 
     @Column(name = "thumbnail")
     private String thumbnail;
@@ -59,11 +58,14 @@ public class Blog {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "blog", orphanRemoval = true, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Comment> comments = new LinkedHashSet<>();
 
     @PrePersist
     public void prePersist() {
         createdAt = LocalDateTime.now();
-        if(status) {
+        if (status) {
             publishedAt = createdAt;
         }
     }
@@ -71,10 +73,16 @@ public class Blog {
     @PreUpdate
     public void preUpdate() {
         updatedAt = LocalDateTime.now();
-        if(status) {
+        if (status) {
             publishedAt = updatedAt;
         } else {
             publishedAt = null;
         }
+    }
+
+    @PreRemove
+    public void preRemove() {
+        this.setCategories(null);
+        this.setUser(null);
     }
 }

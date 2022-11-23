@@ -1,8 +1,7 @@
 package com.example.day_17_1118_blog.controller;
 
 import com.example.day_17_1118_blog.entity.Blog;
-import com.example.day_17_1118_blog.request.CreateBlogRequest;
-import com.example.day_17_1118_blog.request.UpdateBlogRequest;
+import com.example.day_17_1118_blog.request.UpsertBlogRequest;
 import com.example.day_17_1118_blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,13 +27,13 @@ public class BlogController {
 
     // 3. tạo blog
     @PostMapping("blogs")
-    public Blog createBlog(@RequestBody CreateBlogRequest request){
+    public Blog createBlog(@RequestBody UpsertBlogRequest request){
         return blogService.createBlog(request);
     }
 
     //4.cập nhập Blog
-    @PostMapping("blogs/{id}")
-    public Blog craeteBlog(@PathVariable Integer id, @RequestBody UpdateBlogRequest request){
+    @PutMapping("blogs/{id}")
+    public Blog craeteBlog(@PathVariable Integer id, @RequestBody UpsertBlogRequest request){
         return blogService.updateBlog(id,request);
     }
 
