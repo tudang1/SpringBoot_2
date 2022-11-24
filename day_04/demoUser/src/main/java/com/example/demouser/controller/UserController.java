@@ -32,5 +32,7 @@ public class UserController {
         return userService.createUser(request);
     }
     @PutMapping("/users/{id}")
-    public UserDto updateUser(@PathVariable)
+    public UserDto updateUser(@PathVariable Integer id){
+        return null;
+    }
 }

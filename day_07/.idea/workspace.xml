@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="35b9a86c-b3b0-41be-89cc-8c5ecbffa2e0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../day_17_1118_blog/src/main/java/com/example/day_17_1118_blog/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day_17_1118_blog/src/main/java/com/example/day_17_1118_blog/request/UpsertUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../day_17_1118_blog/src/main/java/com/example/day_17_1118_blog/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/entity/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/entity/Tag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/repository/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/repository/PostRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/repository/TagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testJPA_1123/src/main/java/com/example/testjpa_1123/service/EmployeeService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="2HzxDw9gxcgV5MgzBStzUxEsBIR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../day_10/user-backend" />
+  </component>
+  <component name="RunManager">
+    <configuration name="TestSpringBootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Test_SpringBoot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.test_springboot.TestSpringBootApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="35b9a86c-b3b0-41be-89cc-8c5ecbffa2e0" name="Changes" comment="" />
+      <created>1669301596368</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669301596368</updated>
+      <workItem from="1669301597525" duration="106000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
