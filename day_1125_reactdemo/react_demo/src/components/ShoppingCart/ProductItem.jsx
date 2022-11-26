@@ -1,10 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import { cartItems } from "../../data";
 
 function ProductItem(props) {
     const { id, name, image, price, count, size ,onTru,onCong , onDelete} = props;
-    // const [product,setProduct] = useState(props);
+
     const tru = (id) =>{
       // console.log(count);
       onTru(id);

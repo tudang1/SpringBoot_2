@@ -6,7 +6,7 @@ import { addTodo, deleteTodo } from "../../redux/action/todoAction";
 function TodoList() {
      // Lấy ra dữ liệu từ state
      const todos = useSelector((state) => state.todos);
-     console.log(todos);
+    //  console.log(todos);
  
      const [title, setTitle] = useState("");
     

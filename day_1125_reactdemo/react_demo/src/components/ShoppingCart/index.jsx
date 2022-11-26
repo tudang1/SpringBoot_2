@@ -6,52 +6,39 @@ import BillInformation from './BillInfomation';
 import { useDispatch } from 'react-redux';
 import style from "./style.css";
 import { useSelector } from 'react-redux';
-import { subtractCountProduct } from '../../redux/action/shoppingCartAction';
+import { subtractCountProduct,addCountProduct,deleteProduct } from '../../redux/action/shoppingCartAction';
 
 function ShoppingCart() {
-  const [items, setItems] = useState(cartItems);
-
-  // Lấy ra dữ liệu từ state
-  const counterShoppingCart = useSelector((state) => state.shoppingCarts.count);
-
+ // Lấy ra dữ liệu từ state
+ const shoppingCartItems = useSelector((state) => state.shoppingCarts);
+  console.log(shoppingCartItems);
   // Dùng để dispatch action
   const dispatch = useDispatch();
 
   // Xử lý giảm
   const decrementCounter = (id) => {
+    // Tìm kiếm item dựa trên id
+    let currentItem = shoppingCartItems.find((item) => item.id === id);
+
+    if (currentItem.count === 1) {
+      alert("Tăng đê");
+      return;
+    }
     dispatch(subtractCountProduct(id));
   };
 
 
 //cộng
-const cong = (id) => {
-  // Tìm kiếm item dựa trên id
-  let currentItem = items.find((item) => item.id === id);
-
-  let currentCount = currentItem.count + 1;
-
-  // Cập nhật trong state ban đầu
-  const newItem = items.map((item) => {
-    if (item.id === id) {
-      return { ...item, count: currentCount };
-    }
-    return item;
-  }); // Spread Operator (ES6)
-
-  setItems(newItem);
+const incrementCounter = (id) => {
+   dispatch(addCountProduct(id));
 };
 // xóa
 const handleDelete = (id) => {
-  console.log(id);
-  let choice = window.confirm("Bạn có muốn xóa không?");
-  if (choice == true) {
-    setItems((current) =>
-    current.filter((employee) => {
-      return employee.id !== id;
-    })
-  );
-  } else {
-    return;
+  // Cần confirm trước khi xóa (window.confirm)
+  const inDelete = window.confirm("Có muốn xóa k?");
+
+  if(inDelete){
+     dispatch(deleteProduct(id));
   }
 };
   
@@ -70,20 +57,20 @@ const handleDelete = (id) => {
       {/* <p className="fst-italic message">Không có sản phẩm trong giỏ hàng</p> */}
       <div className="row shopping-cart">
         <div className="col-md-8">
-          {items.length === 0 && (
+          {shoppingCartItems.length === 0 && (
             <li>Không có sản phẩm nào trong giỏ hàng</li>
           )}
-          {items.length > 0 && (
+          {shoppingCartItems.length > 0 && (
             <ProductList
-              onItems={items}
-              onCong={cong}
+              onItems={shoppingCartItems}
+              onCong={incrementCounter}
               onTru={decrementCounter}
               onDelete={handleDelete}
             />
           )}
         </div>
         <BillInformation 
-          onItems={items}
+          onItems={shoppingCartItems}
         />
       </div>
     </div>
