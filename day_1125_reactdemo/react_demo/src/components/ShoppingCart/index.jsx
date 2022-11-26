@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import { cartItems } from '../../data';
 import ProductList from './ProductList';
 import BillInformation from './BillInfomation';
 import { useDispatch } from 'react-redux';

@@ -1,6 +1,4 @@
-import { cartItems } from "../../data";
 
-// const [initialState,setInitialState] = useState(cartItems);
 const initialState = [
   {
     id: 1,
