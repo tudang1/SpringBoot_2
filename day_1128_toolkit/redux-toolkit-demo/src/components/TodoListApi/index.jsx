@@ -4,6 +4,7 @@ import {
     useCreateTodoMutation,
     useDeleteTodoMutation,
     useGetTodosQuery,
+    useUpdateTodoMutation,
 } from "../../app/service/todoListApiService";
 
 function TodoListApi() {
@@ -12,6 +13,7 @@ function TodoListApi() {
 
     const { isLoading } = useGetTodosQuery();
     const [createTodo] = useCreateTodoMutation();
+    const [updateTodo] = useUpdateTodoMutation();
     const [deleteTodo] = useDeleteTodoMutation();
 
     const [title, setTitle] = useState("");
