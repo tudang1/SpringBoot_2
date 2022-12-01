@@ -33,7 +33,7 @@ function Box(){
                     <div 
                     key = {index}
                     ></div>
-                }}
+                })}
             </div>
         </div>
         </>

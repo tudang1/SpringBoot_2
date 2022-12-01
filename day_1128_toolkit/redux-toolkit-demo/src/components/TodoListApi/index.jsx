@@ -21,7 +21,7 @@ function TodoListApi() {
     // Xử lý thêm công việc
     const handleAddTodo = () => {
         // Tiêu đề không được để trống mới được thêm (alert)
-        if (title == "") {
+        if (title === "") {
             alert("Tiêu đề không được để trống");
             return;
         }
@@ -43,6 +43,30 @@ function TodoListApi() {
             deleteTodo(id)
         }
     };
+
+    // update công việc
+    const handleUpdateTodo = (id)=>{
+        
+        let currentTodo = todos.find((todo) => todo.id === id);
+        console.log(currentTodo);
+        let newTitle = window.prompt(
+            "Enter new title : ",
+            currentTodo.title
+        );
+        
+        if (newTitle === "") {
+            alert("Tiêu đề không được để trống");
+            return;
+        };
+        
+        let newTodo = {
+            title : newTitle,
+            status : currentTodo.status
+        };
+
+        updateTodo({id,...newTodo});
+    }
+
 
     if (isLoading) {
         return <h3>Loading ...</h3>;
@@ -68,6 +92,7 @@ function TodoListApi() {
                             <button onClick={() => handleDeleteTodo(todo.id)}>
                                 Delete
                             </button>
+                            <button onClick={() =>handleUpdateTodo(todo.id)}>Update</button>
                         </li>
                     ))}
 
@@ -75,6 +100,7 @@ function TodoListApi() {
                     <li>Không có công việc nào trong danh sách</li>
                 )}
             </ul>
+           
         </>
     );
 }
