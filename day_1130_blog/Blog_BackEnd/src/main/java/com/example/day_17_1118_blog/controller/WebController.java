@@ -1,6 +1,7 @@
 package com.example.day_17_1118_blog.controller;
 
 import com.example.day_17_1118_blog.entity.Blog;
+import com.example.day_17_1118_blog.entity.Category;
 import com.example.day_17_1118_blog.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class WebController {
     // 1. lấy ds tất cả bai viết đã public (status = true) và sắp xếp theo tgian
     // bao gồm cả tim kiếm theo tiêu đề category name
     // /api/v1/blogs?search=java&category=backend
-    @GetMapping("/blog")
+    @GetMapping("/blogs")
     public List<Blog> getBlogs(@RequestParam(required = false) String search,
                                @RequestParam(required = false) String category){
         return webService.getBlogs(search,category);
@@ -27,4 +28,8 @@ public class WebController {
         return webService.getBlogById(id);
     }
 
+    @GetMapping("/categories")
+    public List<Category> getCategories(){
+        return webService.getCategories();
+    }
 }
