@@ -1,34 +1,95 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../../app/service/authService";
 
 function Login() {
-  return (
-    <div className="login-container">
-    <form className="formLogin px-5 py-5 mt-3">
-        <h2 >Login</h2>
-      <div className="mb-3 ">
-        <label for="exampleDropdownFormEmail1" className="form-label">Email address</label>
-        <input type="email" className="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com"/>
-      </div>
-      <div className="mb-3">
-        <label for="exampleDropdownFormPassword1" className="form-label">Password</label>
-        <input type="password" className="form-control" id="exampleDropdownFormPassword1" placeholder="Password"/>
-      </div>
-      <div className="mb-3">
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="dropdownCheck"/>
-          <label className="form-check-label" for="dropdownCheck">
-            Remember me
-          </label>
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [login] = useLoginMutation();
+    // Xử lý login
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        const loginRequest = {
+            email,
+            password,
+        };
+
+        login(loginRequest)
+            .unwrap()
+            .then(() => {
+                alert("Login thành công");
+                navigate("/admin/blogs")
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Login thất bại");
+            });
+    };
+
+    return (
+        <div id="login">
+            <h3 className="text-center text-white pt-5">Login form</h3>
+            <div className="container">
+                <div
+                    id="login-row"
+                    className="row justify-content-center align-items-center"
+                >
+                    <div id="login-column" className="col-md-6">
+                        <div id="login-box" className="col-md-12">
+                            <form
+                                id="login-form"
+                                className="form p-4 shadow-lg"
+                                onSubmit={(e) => handleLogin(e)}
+                            >
+                                <h3 className="text-center">Login</h3>
+                                <div className="form-group mb-3">
+                                    <label htmlFor="username" className="mb-2">
+                                        Email:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        id="username"
+                                        className="form-control"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="form-group mb-3">
+                                    <label htmlFor="password" className="mb-2">
+                                        Password:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="password"
+                                        id="password"
+                                        className="form-control"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="form-group text-center">
+                                    <button
+                                        type="submit"
+                                        className="btn btn-success px-5"
+                                    >
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <button type="submit" className="btn btn-primary">Sign in</button>
-      <div className="dropdown-divider"></div>
-    <a className="dropdown-item" href="#">New around here? Sign up</a>
-    <a className="dropdown-item" href="#">Forgot password?</a>
-    </form>
-    
-  </div>
-  )
+    );
 }
 
-export default Login
+export default Login;

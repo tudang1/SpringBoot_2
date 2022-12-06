@@ -11,4 +11,6 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     Set<Category> findByIdIn(Set<Integer> ids);
 
     Category findByName(String name);
+
+    long countByNameIgnoreCase(String name);
 }
