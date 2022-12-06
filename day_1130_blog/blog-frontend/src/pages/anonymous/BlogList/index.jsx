@@ -120,7 +120,7 @@ function BlogList() {
                                             <div className="course-item shadow-sm rounded mb-4">
                                                 <div className="course-item-image">
                                                     <img
-                                                        src={blog.thumbnail}
+                                                        src="https://media.techmaster.vn/api/static/36/uhWHezPC"
                                                         alt={blog.title}
                                                     />
                                                 </div>

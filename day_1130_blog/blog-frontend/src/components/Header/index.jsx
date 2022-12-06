@@ -14,6 +14,9 @@ function Header() {
                             />
                         </Link>
                     </div>
+                    <div className="ms-auto mt-2 mt-lg-0 " >
+                        <Link style={{ color: "#f8f9fa" }} to={"/admin/login"}>Đăng Nhập</Link>
+                    </div>
                 </div>
             </div>
         </div>
