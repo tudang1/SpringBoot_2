@@ -20,7 +20,7 @@ public class AuthController {
     }
 
     @GetMapping("handle-logout")
-    public String logout(HttpSession session) {
-        return authService.logout(session);
+    public void logout(HttpSession session) {
+        authService.logout(session);
     }
 }

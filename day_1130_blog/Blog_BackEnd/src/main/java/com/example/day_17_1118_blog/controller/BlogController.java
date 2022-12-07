@@ -14,13 +14,13 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("blog")
+    @GetMapping("blogs")
     public List<Blog> getBlogs(){
         return blogService.getBlogs();
     }
 
     //2. lấy chi tiết blog
-    @GetMapping("blog/{id}")
+    @GetMapping("blogs/{id}")
     public Blog getBlogById(@PathVariable Integer id){
         return blogService.getBlogById(id);
     }
@@ -38,7 +38,7 @@ public class BlogController {
     }
 
     //5. xóa Blog
-    @DeleteMapping("blog/{id}")
+    @DeleteMapping("blogs/{id}")
     public void deleteBlogById(@PathVariable Integer id){
         blogService.deleteBlogById(id);
     }

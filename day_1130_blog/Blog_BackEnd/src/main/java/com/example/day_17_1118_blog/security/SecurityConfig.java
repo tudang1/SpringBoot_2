@@ -48,14 +48,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors()
+                .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/auth/**, /api/auth","/api/v1/**").permitAll() // Cho phép ai cũng có thể đi qua
-                .antMatchers("/api/admin/**").hasRole("ADMIN") // Cần quyền admin mới được đi qua
+                .antMatchers("/api/auth/**", "/api/v1/**").permitAll() // Cho phép ai cũng có thể đi qua
+                .antMatchers("/api/admin/**").permitAll() // Cần quyền admin mới được đi qua
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPointCustom) // Xử lý authentication
-                .accessDeniedHandler(accessDeniedHandlerCustom) // Xử lý forbidden
+                .authenticationEntryPoint(authenticationEntryPointCustom) // Xử lý lỗi authentication
+                .accessDeniedHandler(accessDeniedHandlerCustom) // Xử lý lỗi forbidden
                 .and()
                 .logout()
                 .logoutUrl("/handle-logout")

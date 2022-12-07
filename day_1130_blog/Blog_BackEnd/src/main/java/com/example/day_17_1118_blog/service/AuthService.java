@@ -40,9 +40,7 @@ public class AuthService {
         }
     }
 
-    public String logout(HttpSession session) {
+    public void logout(HttpSession session) {
         session.invalidate();
-
-        return "logout success";
     }
 }

@@ -1,6 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useLogoutMutation } from "../../app/services/authService";
 
 function Navigation() {
+    const { auth } = useSelector((state) => state.auth);
+    const [logout] = useLogoutMutation();
+
+    const handleLogout = () => {
+        logout();
+    };
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div className="container-fluid taskbar">
@@ -27,10 +35,10 @@ function Navigation() {
                                 aria-expanded="false"
                             >
                                 <img
-                                    src="https://scontent.fhan15-2.fna.fbcdn.net/v/t1.18169-9/24852589_365622133863182_7606245839217546982_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=d51anmSwG88AX-zCXGU&_nc_ht=scontent.fhan15-2.fna&oh=00_AfAa2QZoh7N_NnDQbZijAoj1evb_2I8F1Xgq--Qrgpzq7Q&oe=63B5064E"
+                                    src={auth?.avatar ? auth?.avatar : "https://via.placeholder.com/150"}
                                     className="rounded-circle"
                                     style={{ width: "40px" }}
-                                    alt="Avatar"
+                                    alt={auth?.name}
                                 />
                             </a>
                             <div
@@ -38,12 +46,12 @@ function Navigation() {
                                 aria-labelledby="navbarDropdown"
                             >
                                 <div className="dropdown-divider"></div>
-                                <a
+                                <button
                                     className="dropdown-item"
-                                    href="./login.html"
+                                    onClick={handleLogout}
                                 >
                                     Đăng xuất
-                                </a>
+                                </button>
                             </div>
                         </li>
                     </ul>
