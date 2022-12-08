@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useDeleteBlogMutation, useGetBlogsQuery } from "../../../../app/services/blogService";
+import {
+    useDeleteBlogMutation,
+    useGetBlogsQuery,
+} from "../../../../app/services/blogService";
 import { convertDate } from "../../../../utils/utils";
 
 function BlogAdminList() {
@@ -9,17 +12,18 @@ function BlogAdminList() {
     const { isLoading } = useGetBlogsQuery();
     const [deleteBlog] = useDeleteBlogMutation();
 
+    const handleDeleteBlog = (id) => {
+        const isConfirm = window.confirm("Bạn có muốn xóa không?");
+        if (isConfirm) {
+            deleteBlog(id)
+                .unwrap()
+                .then(() => alert("Xóa thành công"))
+                .catch((err) => console.log(err));
+        }
+    };
+
     if (isLoading) {
         return <h3>Loading ...</h3>;
-    }
-
-    // xóa
-    const handleDelete = (id) =>{
-        // Cần confirm trước khi xóa (window.confirm)
-        const isDelete = window.confirm("Bạn có muốn xóa không?");
-        if (isDelete) {
-            deleteBlog(id);
-        }
     }
 
     return (
@@ -57,16 +61,20 @@ function BlogAdminList() {
                                         </Link>
                                     </td>
                                     <td>
-                                        {blog.categories.map(c => c.name).join(", ")}
+                                        {blog.categories
+                                            .map((c) => c.name)
+                                            .join(", ")}
                                     </td>
                                     <td>
                                         {blog.status ? "Công khai" : "Nháp"}
                                     </td>
                                     <td>{convertDate(blog.createdAt)}</td>
                                     <td>
-                                        <button 
-                                            className="btn btn-danger" 
-                                            onClick={()=>handleDelete(blog.id)}
+                                        <button
+                                            className="btn btn-danger"
+                                            onClick={() =>
+                                                handleDeleteBlog(blog.id)
+                                            }
                                         >
                                             Xóa
                                         </button>
