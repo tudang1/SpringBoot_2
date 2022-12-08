@@ -7,6 +7,20 @@ export const blogService = createApi({
         getBlogs: builder.query({
             query: () => "/blogs"
         }),
+        createBlog: builder.mutation({
+            query: (data) => ({
+                url: "/blogs",
+                method: "POST",
+                body: data
+            })
+        }),
+        updateBlog: builder.mutation({
+            query: ({ id, ...data }) => ({
+                url: `/blogs/${id}`,
+                method: "PUT",
+                body: data
+            })
+        }),
         deleteBlog: builder.mutation({
             query: (id) => ({
                 url: `/blogs/${id}`,
@@ -20,6 +34,8 @@ export const blogService = createApi({
 })
 
 export const {
-     useGetBlogsQuery
-    ,useDeleteBlogMutation 
+    useGetBlogsQuery,
+    useCreateBlogMutation,
+    useUpdateBlogMutation,
+    useDeleteBlogMutation 
 } = blogService

@@ -24,13 +24,20 @@ function BlogAdminCreate() {
         };
     });
 
-    console.log(options);
+    // console.log(options);
+
+    const handleAddCategories = (value) =>{
+        setCategoryIds(value);
+        // console.log(categoryIds);
+    }
 
     const handleChangeContent = (value) => {
         setContent(value);
     };
 
-    const handleCreateBlog = () => {};
+    const handleCreateBlog = () => {
+        
+    };
 
     if (isLoading) {
         return <h3>Loading ...</h3>;
@@ -130,7 +137,12 @@ function BlogAdminCreate() {
                                 >
                                     Danh mục
                                 </label>
-                                <Select options={options} isMulti />
+                                <Select 
+                                    options={options} 
+                                    isMulti 
+                                    defaultValue={categoryIds}
+                                    onChange ={e => handleAddCategories(e)}
+                                />
                             </div>
                         </div>
                     </div>
