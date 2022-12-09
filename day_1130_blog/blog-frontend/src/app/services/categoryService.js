@@ -7,6 +7,13 @@ export const categoryService = createApi({
         getCategories: builder.query({
             query: () => "/categories"
         }),
+        createCategory:builder.mutation({
+            query :(data) =>({
+                url:`/categories`,
+                method : "POST",
+                body: data
+            })
+        }),
         deleteCategory: builder.mutation({
             query: (id) => ({
                 url: `/categories/${id}`,
@@ -21,5 +28,6 @@ export const categoryService = createApi({
 
 export const {
     useGetCategoriesQuery,
+    useCreateCategoryMutation,
     useDeleteCategoryMutation
 } = categoryService

@@ -27,7 +27,7 @@ public class CategoryController {
     }
 
     //3. tao mới
-    @PostMapping("category")
+    @PostMapping("categories")
     public Category createCategory(@RequestBody UpsertCategory request){
         return categoryService.createCategory(request);
     }

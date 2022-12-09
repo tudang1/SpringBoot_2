@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 import SimpleMdeReact from 'react-simplemde-editor';
+import { useCreateBlogMutation } from '../../../../app/services/blogService';
 import { useGetCategoriesQuery } from '../../../../app/services/categoryService';
 
 
 function BlogAdminCreate() {
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [description, setDescription] = useState("");
@@ -16,6 +18,7 @@ function BlogAdminCreate() {
 
     const { categories } = useSelector((state) => state.categories);
     const { isLoading } = useGetCategoriesQuery();
+    const [createBlog] = useCreateBlogMutation();
 
     const options = categories.map((category) => {
         return {
@@ -36,6 +39,26 @@ function BlogAdminCreate() {
     };
 
     const handleCreateBlog = () => {
+        // Tiêu đề không được để trống mới được thêm (alert)
+        if (title === "") {
+            alert("Tiêu đề không được để trống");
+            return;
+        }
+
+        let newBlog = {
+            title : title,
+            content : content,
+            description : description,
+            status : status,
+            categoryIds : categoryIds
+        };
+
+        createBlog(newBlog)
+        .unwrap()
+        .then(() => {
+            alert("Tạo thành công");
+            navigate("/admin/blogs")
+        })
         
     };
 
