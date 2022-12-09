@@ -19,7 +19,11 @@ public class Day171118BlogApplication {
     }
 
     @Bean
-    public Slugify slugify(){
-        return Slugify.builder().build();
+    public Slugify slugify() {
+        return Slugify.builder()
+                .lowerCase(true)
+                .customReplacement("đ", "d")
+                .customReplacement("Đ", "d")
+                .build();
     }
 }

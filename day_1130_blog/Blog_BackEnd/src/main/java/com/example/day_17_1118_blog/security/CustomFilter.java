@@ -15,23 +15,25 @@ import java.io.IOException;
 
 @Component
 public class CustomFilter extends OncePerRequestFilter {
+
     @Autowired
-    private CustomUserDetailService customUserDetailService;
+    private CustomUserDetailService customUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Lấy email trong session
         String email = (String) request.getSession().getAttribute("MY_SESSION");
 
+        // Nếu không tồn tại email -> chuyển qua filter tiếp theo để xử lý
         if(email == null) {
             filterChain.doFilter(request, response);
             return;
         }
 
         // Lấy ra đối tượng xác thực
-        UserDetails user = customUserDetailService.loadUserByUsername(email);
+        UserDetails user = customUserDetailsService.loadUserByUsername(email);
 
-        // Tạo ra đối tượng đã xác thực
+        // Tạo ra đối tượng đã xác thực chứa các roles để phân quyền request
         UsernamePasswordAuthenticationToken token =
                 new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getAuthorities());
 

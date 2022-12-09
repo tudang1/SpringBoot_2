@@ -9,9 +9,9 @@ export const blogService = createApi({
         }),
         createBlog: builder.mutation({
             query: (data) => ({
-                url: "/blogs",
+                url: `/blogs`,
                 method: "POST",
-                body: data
+                body: JSON.stringify(data)
             })
         }),
         updateBlog: builder.mutation({

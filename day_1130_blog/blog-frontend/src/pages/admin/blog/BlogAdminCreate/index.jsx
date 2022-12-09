@@ -59,6 +59,7 @@ function BlogAdminCreate() {
             alert("Tạo thành công");
             navigate("/admin/blogs")
         })
+        .catch((e) =>alert(e));
         
     };
 

@@ -23,7 +23,7 @@ function CategoryAdminList() {
       return;
     }
     console.log("goi aPI");
-    createCategory(name)
+    createCategory({name})
       .unwrap()
       .then(() => {
         alert("Tạo thành công");
