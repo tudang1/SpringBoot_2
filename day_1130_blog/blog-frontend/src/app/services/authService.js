@@ -10,9 +10,6 @@ export const authService = createApi({
                 method: "POST",
                 body: data
             })
-        }),
-        logout: builder.mutation({
-            query: () => "/handle-logout"
         })
     })
 })

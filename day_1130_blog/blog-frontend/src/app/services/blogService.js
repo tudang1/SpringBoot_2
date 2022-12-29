@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import baseApi from './baseService'
 
-export const blogService = createApi({
-    reducerPath: 'blogService',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/api/admin' }),
+export const blogService = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getBlogs: builder.query({
             query: () => "/blogs"

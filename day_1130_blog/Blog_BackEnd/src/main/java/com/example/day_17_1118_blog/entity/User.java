@@ -39,6 +39,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
+
     @Type(type = "json")
     @Column(name = "roles", columnDefinition = "json")
     private List<String> roles;

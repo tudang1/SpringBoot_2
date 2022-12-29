@@ -1,6 +1,7 @@
 package com.example.day_17_1118_blog.controller;
 
 import com.example.day_17_1118_blog.entity.User;
+import com.example.day_17_1118_blog.repository.AuthResponse;
 import com.example.day_17_1118_blog.request.LoginRequest;
 import com.example.day_17_1118_blog.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("handle-login")
-    public User login(@RequestBody LoginRequest request, HttpSession session) {
-        return authService.login(request, session);
+    public AuthResponse login(@RequestBody LoginRequest request) {
+        return authService.login(request);
     }
 
-    @GetMapping("handle-logout")
-    public void logout(HttpSession session) {
-        authService.logout(session);
-    }
+//    @GetMapping("handle-logout")
+//    public void logout(HttpSession session) {
+//        authService.logout(session);
+//    }
 }

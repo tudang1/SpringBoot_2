@@ -8,13 +8,16 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private CustomUserDetailService customUserDetailsService;
 
@@ -53,19 +56,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**", "/api/v1/**").permitAll() // Cho phép ai cũng có thể đi qua
-                .antMatchers("/api/admin/**").permitAll() // Cần quyền admin mới được đi qua
+                .antMatchers("/api/admin/**").hasRole("ADMIN") // Cần quyền admin mới được đi qua
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPointCustom) // Xử lý lỗi authentication
                 .accessDeniedHandler(accessDeniedHandlerCustom) // Xử lý lỗi forbidden
                 .and()
-                .logout()
-                .logoutUrl("/handle-logout")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .permitAll()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
-
     }
 }
